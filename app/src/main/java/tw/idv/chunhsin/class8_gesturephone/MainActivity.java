@@ -1,9 +1,11 @@
 package tw.idv.chunhsin.class8_gesturephone;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     void findviews(){
         addGesture = (Button)findViewById(R.id.button);
+        addGesture.setOnClickListener(btnOnClick);
         listGesture = (Button)findViewById(R.id.button2);
+        listGesture.setOnClickListener(btnOnClick);
     }
 
     @Override
@@ -42,4 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    View.OnClickListener btnOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch(view.getId()){
+                case R.id.button:
+                    Intent intent = new Intent(MainActivity.this,AddGestureActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.button2:
+                    break;
+            }
+        }
+    };
 }
